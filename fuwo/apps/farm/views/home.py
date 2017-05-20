@@ -8,7 +8,7 @@ import tornado.web
 import tornado.gen
 import tornado.ioloop
 import functools
-from base import BaseHandler
+from .base import BaseHandler
 import time
 import tornado.concurrent
 import datetime
@@ -40,9 +40,9 @@ class HomeHandler(BaseHandler):
         for page in pagers:
             for content in page.comments:
                 content = content['content']
-                print content
+                print(content)
                 comments.append(str(content))
-        print comments
+        print(comments)
         self.render('index.html', error=comments)
 
         # print " ok "
@@ -60,7 +60,7 @@ class AsyncHomeHandler(BaseHandler):
 
     def test(self, params):
         time.sleep(10)
-        print params
+        print(params)
 
 
 class AsyncTaskHandler(BaseHandler):
@@ -74,7 +74,7 @@ class AsyncTaskHandler(BaseHandler):
     def get(self, *args, **kwargs):
         # yield result
         response = yield tornado.gen.Task(self.test, 'magic task test')
-        print "response{}".format(response)
+        print("response{}".format(response))
 
         self.finish('jas')
 
@@ -97,7 +97,7 @@ class FutureHandler(BaseHandler):
     @tornado.concurrent.run_on_executor
     def test(self, params):
         time.sleep(10)
-        print params
+        print(params)
 
 
 class FutureResponseHandler(tornado.web.RequestHandler):
@@ -112,7 +112,7 @@ class FutureResponseHandler(tornado.web.RequestHandler):
         response = yield tornado.gen.with_timeout(datetime.timedelta(10), future)
 
         if response:
-            print 'response', response.result()
+            print('response', response.result())
 
     @tornado.concurrent.run_on_executor
     def test(self, params):

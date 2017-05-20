@@ -12,11 +12,12 @@ import tornado.httpserver
 
 
 def main():
-    tornado.options.parse_command_line()
+    options.parse_command_line()
     http_server = tornado.httpserver.HTTPServer(Application())
     http_server.listen(options.port)
+    print(" Server is listening at 127.0.0.1:%s ... " % options.port)
     tornado.ioloop.IOLoop.current().start()
 
+
 if __name__ == '__main__':
-    print " Server is listening at 127.0.0.1:%s ... " % options.port
     main()

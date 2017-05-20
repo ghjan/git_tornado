@@ -3,5 +3,5 @@
 """
 @author magic, create Date: 5/16/17
 """
-from views.home import HomeHandler, OtherHandler, AsyncTaskHandler, FutureHandler, FutureResponseHandler
+from .views.home import HomeHandler, OtherHandler, AsyncTaskHandler, FutureHandler, FutureResponseHandler
 

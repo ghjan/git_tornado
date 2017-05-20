@@ -181,6 +181,6 @@ if __name__ == '__main__':
         item['no'] = generate_uuid()
         item['category'] = random.sample(noes, 5)
 
-        print item['no'], item['category'][0]
+        print(item['no'], item['category'][0])
         Item(**item).save()
 
