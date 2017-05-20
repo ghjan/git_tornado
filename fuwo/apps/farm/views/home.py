@@ -74,7 +74,7 @@ class AsyncTaskHandler(BaseHandler):
     def get(self, *args, **kwargs):
         # yield result
         response = yield tornado.gen.Task(self.test, 'magic task test')
-        print("response{}".format(response))
+        print("response:{}".format(response))
 
         self.finish('jas')
 
